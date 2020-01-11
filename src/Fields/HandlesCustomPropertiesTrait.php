@@ -71,10 +71,8 @@ trait HandlesCustomPropertiesTrait
 
         //Add focus point for image if set
         if ($request->exists("__media-custom-properties__.{$collection}.{$index}.focus")) {
-            $targetAttribute = "custom_properties->focus";
             $requestAttribute = "__media-custom-properties__.{$collection}.{$index}.focus";
-
-            $field->fillInto($request, $media, $targetAttribute, $requestAttribute);
+            $media->setCustomProperty('focus', $request[$requestAttribute]);
         }
 
         $media->save();
