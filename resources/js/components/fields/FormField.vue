@@ -126,9 +126,10 @@ export default {
         {}
       )
 
-      if ('focus' in image.custom_properties) {
-        custom_properties.focus = image.custom_properties.focus
-      }
+      custom_properties.focus = _.get(image, 'custom_properties.focus', {
+        x: 0,
+        y: 0
+      })
 
       return custom_properties
     },
